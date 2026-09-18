@@ -1,0 +1,14 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 输出的大批次 JSON 仅本地留存，manifest.json 版本化进 Git
+data/question-bank/history/2*.json

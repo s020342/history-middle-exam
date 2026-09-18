@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "history-exam-scraper"
+version = "1.0.0"
+description = "历史中考训练小程序 - 题库抓取与录入工具 (V1.0 MVP)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "history-exam-team" }]
+keywords = ["history", "exam", "scraper", "education"]
+
+# V1.0 抓取侧依赖：校验/去重/CLI，刻意避免引入重框架
+dependencies = [
+    "pydantic>=2.5,<3.0",
+    "datasketch>=1.6,<2.0",
+    "PyYAML>=6.0,<7.0",
+    "click>=8.1,<9.0",
+    "rich>=13.7,<14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9.0",
+]
+
+[project.scripts]
+# CLI 入口：history-scraper validate / teacher-import
+history-scraper = "scraper.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scraper"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers"

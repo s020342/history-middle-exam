@@ -1,0 +1,156 @@
+# 教师原创题目样本（10 题，对应 docs/05 §7 V1.0 自建 100 题目标的起步样例）
+# 字段对齐 docs/05 §3.1 JSON Schema；考点编码对齐 §6.1 考点骨架
+# 教师只需填关键字段：sourceType / license / subject / primaryKnowledgeId 缺省时由工具自动补默认值
+# sourceType 默认 ORIGINAL（原创）、license 默认 CC-BY-SA-4.0、subject 默认 HISTORY
+
+- externalId: HIS-2026-001
+  type: SINGLE_CHOICE
+  stem: 秦始皇统一六国的年份是？
+  options:
+    - {key: A, content: 公元前221年}
+    - {key: B, content: 公元前206年}
+    - {key: C, content: 公元220年}
+    - {key: D, content: 公元618年}
+  answer: A
+  analysis: 公元前221年，秦王嬴政灭六国，建立中国历史上第一个统一的多民族的中央集权国家。
+  knowledgeIds: [K-CHN-ANC-QIN-HAN]
+  primaryKnowledgeId: K-CHN-ANC-QIN-HAN
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 张老师
+
+- externalId: HIS-2026-002
+  type: SINGLE_CHOICE
+  stem: 汉武帝采纳哪位儒生的建议，实行"罢黜百家，尊崇儒术"？
+  options:
+    - {key: A, content: 董仲舒}
+    - {key: B, content: 贾谊}
+    - {key: C, content: 司马迁}
+    - {key: D, content: 主父偃}
+  answer: A
+  analysis: 董仲舒向汉武帝提出"罢黜百家，尊崇儒术"的建议，此后儒学居于主导地位，成为正统思想。
+  knowledgeIds: [K-CHN-ANC-QIN-HAN]
+  primaryKnowledgeId: K-CHN-ANC-QIN-HAN
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 张老师
+
+- externalId: HIS-2026-003
+  type: TRUE_FALSE
+  stem: 丝绸之路是张骞出使西域之后开通的中外交通要道。
+  options: null
+  answer: T
+  analysis: 汉武帝派张骞两次出使西域，为丝绸之路的开辟奠定了基础，促进了东西方经济文化交流。
+  knowledgeIds: [K-CHN-ANC-QIN-HAN]
+  primaryKnowledgeId: K-CHN-ANC-QIN-HAN
+  difficulty: 1
+  sourceDesc: 教师原创
+  author: 李老师
+
+- externalId: HIS-2026-004
+  type: SINGLE_CHOICE
+  stem: 唐太宗李世民统治期间政治清明、经济复苏，史称？
+  options:
+    - {key: A, content: 文景之治}
+    - {key: B, content: 贞观之治}
+    - {key: C, content: 开元盛世}
+    - {key: D, content: 康乾盛世}
+  answer: B
+  analysis: 唐太宗年号贞观，其在位期间吸取隋亡教训、勤于政事、善于纳谏，史称"贞观之治"。
+  knowledgeIds: [K-CHN-ANC-SUI-TANG]
+  primaryKnowledgeId: K-CHN-ANC-SUI-TANG
+  difficulty: 1
+  sourceDesc: 教师原创
+  author: 李老师
+
+- externalId: HIS-2026-005
+  type: SINGLE_CHOICE
+  stem: 隋朝确立并通过分科考试选拔人才的制度是？
+  options:
+    - {key: A, content: 察举制}
+    - {key: B, content: 九品中正制}
+    - {key: C, content: 科举制}
+    - {key: D, content: 世袭制}
+  answer: C
+  analysis: 隋炀帝时创立进士科，科举制正式确立，扩大了官吏选拔范围，此制度沿用约1300年。
+  knowledgeIds: [K-CHN-ANC-SUI-TANG]
+  primaryKnowledgeId: K-CHN-ANC-SUI-TANG
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 李老师
+
+- externalId: HIS-2026-006
+  type: SINGLE_CHOICE
+  stem: 南宋岳飞抗金的名将队伍被称为？
+  options:
+    - {key: A, content: 玄甲军}
+    - {key: B, content: 岳家军}
+    - {key: C, content: 戚家军}
+    - {key: D, content: 北府兵}
+  answer: B
+  analysis: 岳飞统率的"岳家军"纪律严明，能征善战，郾城大捷大败金军主力。
+  knowledgeIds: [K-CHN-ANC-SONG-YUAN]
+  primaryKnowledgeId: K-CHN-ANC-SONG-YUAN
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 王老师
+
+- externalId: HIS-2026-007
+  type: SINGLE_CHOICE
+  stem: 郑和下西洋最早发生在哪位皇帝在位时期？
+  options:
+    - {key: A, content: 明太祖}
+    - {key: B, content: 明成祖}
+    - {key: C, content: 明仁宗}
+    - {key: D, content: 明宣宗}
+  answer: B
+  analysis: 1405年明成祖朱棣派郑和首次出使西洋，最远到达非洲东海岸和红海沿岸。
+  knowledgeIds: [K-CHN-ANC-MING-QING]
+  primaryKnowledgeId: K-CHN-ANC-MING-QING
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 王老师
+
+- externalId: HIS-2026-008
+  type: SINGLE_CHOICE
+  stem: 第一次鸦片战争爆发于哪一年？
+  options:
+    - {key: A, content: 1839年}
+    - {key: B, content: 1840年}
+    - {key: C, content: 1856年}
+    - {key: D, content: 1894年}
+  answer: B
+  analysis: 1840年英国发动鸦片战争，清政府战败后签订《南京条约》，中国开始沦为半殖民地半封建社会，是中国近代史的开端。
+  knowledgeIds: [K-CHN-MOD-OPIUM-WAR]
+  primaryKnowledgeId: K-CHN-MOD-OPIUM-WAR
+  difficulty: 1
+  sourceDesc: 教师原创
+  author: 王老师
+
+- externalId: HIS-2026-009
+  type: TRUE_FALSE
+  stem: 辛亥革命推翻了清王朝的反动统治，宣告了中国两千多年君主专制制度的终结。
+  options: null
+  answer: T
+  analysis: 1911年辛亥革命推翻清王朝，结束君主专制制度，但未改变中国半殖民地半封建社会的性质。
+  knowledgeIds: [K-CHN-MOD-REPUBLIC]
+  primaryKnowledgeId: K-CHN-MOD-REPUBLIC
+  difficulty: 2
+  sourceDesc: 教师原创
+  author: 王老师
+
+- externalId: HIS-2026-010
+  type: SINGLE_CHOICE
+  stem: 中国全民族抗战开始的标志是？
+  options:
+    - {key: A, content: 九一八事变}
+    - {key: B, content: 七七事变}
+    - {key: C, content: 西安事变}
+    - {key: D, content: 八一三事变}
+  answer: B
+  analysis: 1937年7月7日卢沟桥事变（七七事变）后，中国全民族抗战开始。
+  knowledgeIds: [K-CHN-MOD-ANTI-JAPAN]
+  primaryKnowledgeId: K-CHN-MOD-ANTI-JAPAN
+  difficulty: 1
+  sourceDesc: 教师原创
+  author: 王老师
