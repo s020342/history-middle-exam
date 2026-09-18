@@ -1,0 +1,47 @@
+.train-container {
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.train-progress {
+  margin: 24rpx;
+}
+
+.progress-text {
+  margin-bottom: 16rpx;
+  color: #606266;
+  font-size: 28rpx;
+}
+
+.progress-bar {
+  height: 8rpx;
+  background: #ebeef5;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3a7bd5, #5e9ce8);
+  transition: width 0.3s ease;
+}
+
+.train-footer {
+  margin: 48rpx 24rpx;
+}
+
+.train-footer .btn-primary {
+  width: 100%;
+}
+
+.loading-wrap {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  color: #909399;
+  font-size: 28rpx;
+}

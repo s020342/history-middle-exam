@@ -1,0 +1,46 @@
+<view class="wrong-container">
+  <!-- 空状态 -->
+  <view class="empty-wrap" wx:if="{{!loading && records.length === 0}}">
+    <view class="empty-text">暂无错题，继续加油！</view>
+  </view>
+
+  <!-- 错题列表 -->
+  <view class="wrong-list" wx:if="{{records.length}}">
+    <view class="wrong-card" wx:for="{{records}}" wx:key="id">
+      <view class="card-header">
+        <view class="card-type">{{item.questionType === 1 ? '选择题' : '判断题'}}</view>
+        <view class="card-count">错 {{item.errorCount}} 次</view>
+      </view>
+      <view class="card-stem">{{item.stem}}</view>
+      <view class="card-answer">
+        <text class="answer-label">正确答案：</text>
+        <text class="answer-value">{{item.correctAnswer}}</text>
+      </view>
+      <view class="card-footer">
+        <view class="cause-tag {{item.errorCauseId ? 'tag-set' : ''}}"
+              data-id="{{item.id}}" bindtap="onPickCauseTap">
+          {{item.errorCauseId ? '错因已选' : '点选错因'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="list-bottom" wx:if="{{records.length}}">
+    {{hasMore ? '上拉加载更多' : '没有更多了'}}
+  </view>
+</view>
+
+<!-- 错因选择弹层 -->
+<view class="sheet-mask {{showCauseSheet ? 'show' : ''}}" bindtap="onSheetClose">
+  <view class="sheet-body {{showCauseSheet ? 'show' : ''}}" catchtap="onSheetBodyTap">
+    <view class="sheet-title">请选择错因</view>
+    <view class="sheet-item"
+          wx:for="{{causes}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="onCauseTap">
+      {{item.name}}
+    </view>
+    <view class="sheet-cancel" bindtap="onSheetClose">取消</view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- history-api：启动聚合模块，承载 Spring Boot 启动类与统一配置 -->
+    <parent>
+        <groupId>com.history.exam</groupId>
+        <artifactId>history-exam-server</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>history-api</artifactId>
+    <name>history-api</name>
+    <description>启动聚合模块：承载 Spring Boot 启动类与统一配置，单体聚合部署</description>
+
+    <dependencies>
+        <!-- 聚合所有业务模块，打包为单个可执行 jar -->
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-student</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-admin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-pay</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-job</artifactId>
+        </dependency>
+        <!-- 测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>history-exam-server</finalName>
+        <plugins>
+            <!-- Spring Boot 打包：打可执行 jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

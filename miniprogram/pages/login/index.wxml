@@ -1,0 +1,18 @@
+<view class="login-container">
+  <view class="login-logo">
+    <view class="logo-icon">历</view>
+    <view class="logo-text">历史中考训练</view>
+    <view class="logo-desc">刷题 · 错因 · 复习 · 订阅</view>
+  </view>
+
+  <view class="login-actions">
+    <button class="btn-primary" bindtap="onLoginTap" loading="{{loading}}" disabled="{{loading}}">
+      微信一键登录
+    </button>
+    <view class="skip-btn" bindtap="onSkipTap">先逛逛</view>
+  </view>
+
+  <view class="login-agreement">
+    登录即表示同意《用户协议》《隐私政策》
+  </view>
+</view>

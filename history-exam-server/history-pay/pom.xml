@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- history-pay：支付与订阅模块，承载微信支付下单、回调验签、订阅权益 -->
+    <parent>
+        <groupId>com.history.exam</groupId>
+        <artifactId>history-exam-server</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>history-pay</artifactId>
+    <name>history-pay</name>
+    <description>支付与订阅模块：微信支付下单、回调验签、订阅权益</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-student</artifactId>
+        </dependency>
+        <!-- 微信支付 SDK v3 -->
+        <dependency>
+            <groupId>com.github.wechatpay-apiv3</groupId>
+            <artifactId>wechatpay-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+        <!-- Lombok：provided 作用域不会传递，本模块使用注解故需显式声明 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.admin.mapper.KnowledgePointMapper">
+
+    <!-- 结果映射：列名 -> KnowledgePointVO 字段；id/parent_id 用 CAST 转字符串避免 JS 精度丢失 -->
+    <resultMap id="KnowledgePointVOMap" type="com.history.exam.admin.vo.KnowledgePointVO">
+        <id property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="name" column="name"/>
+        <result property="parentId" column="parentId"/>
+        <result property="level" column="level"/>
+        <result property="isHighFreq" column="isHighFreq"/>
+        <result property="sort" column="sort"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 分页查询：支持名称模糊 / 高频筛选 / 状态筛选；不带 card_content；
+         id 与 parent_id 转 CHAR 串避免 JS 精度丢失 -->
+    <select id="selectPageList" resultMap="KnowledgePointVOMap">
+        SELECT
+            CAST(id AS CHAR)         AS id,
+            code,
+            name,
+            CAST(parent_id AS CHAR)  AS parentId,
+            level,
+            is_high_freq            AS isHighFreq,
+            sort,
+            status
+        FROM knowledge_point
+        WHERE deleted = 0
+        <if test="query.name != null and query.name != ''">
+            AND name LIKE CONCAT('%', #{query.name}, '%')
+        </if>
+        <if test="query.isHighFreq != null">
+            AND is_high_freq = #{query.isHighFreq}
+        </if>
+        <if test="query.status != null">
+            AND status = #{query.status}
+        </if>
+        ORDER BY sort ASC, id DESC
+    </select>
+
+</mapper>

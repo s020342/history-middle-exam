@@ -1,0 +1,47 @@
+<view class="home-container">
+  <!-- 顶部欢迎卡 -->
+  <view class="welcome-card">
+    <view class="welcome-text">
+      <view class="welcome-title">{{nickname}}，加油！</view>
+      <view class="welcome-sub" wx:if="{{subscribed}}">订阅会员 · 全部题目畅练</view>
+      <view class="welcome-sub" wx:else>今日剩余 {{remainingCount}}/{{dailyLimit}} 题</view>
+    </view>
+    <view class="welcome-badge {{subscribed ? 'badge-vip' : ''}}">
+      {{subscribed ? 'VIP' : '免费'}}
+    </view>
+  </view>
+
+  <!-- 训练入口 -->
+  <view class="entry-list">
+    <view class="entry-item" bindtap="onTrainTap">
+      <view class="entry-icon icon-train">练</view>
+      <view class="entry-meta">
+        <view class="entry-name">自由训练</view>
+        <view class="entry-desc">按考点/题型组卷</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+
+    <view class="entry-item" bindtap="onWrongBookTap">
+      <view class="entry-icon icon-wrong">错</view>
+      <view class="entry-meta">
+        <view class="entry-name">错题本</view>
+        <view class="entry-desc">回顾错题，归因补救</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+
+    <view class="entry-item" bindtap="onSubscribeTap" wx:if="{{!subscribed}}">
+      <view class="entry-icon icon-vip">V</view>
+      <view class="entry-meta">
+        <view class="entry-name">订阅会员</view>
+        <view class="entry-desc">月订阅 19.9 元畅练</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="home-tip" wx:if="{{!subscribed && remainingCount === 0}}">
+    今日免费题量已用完，订阅会员解锁全部题目
+  </view>
+</view>

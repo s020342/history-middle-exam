@@ -1,0 +1,85 @@
+/* 知识点卡片页样式 */
+.card-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.loading-tip,
+.empty-tip {
+  text-align: center;
+  color: #999;
+  padding: 80rpx 0;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.card-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.card-item.card-expanded {
+  box-shadow: 0 4rpx 20rpx rgba(58, 123, 213, 0.12);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.card-name {
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.card-badge {
+  background: #ff6b35;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+}
+
+.card-arrow {
+  color: #3a7bd5;
+  font-size: 26rpx;
+}
+
+.card-body {
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-content {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.card-loading {
+  text-align: center;
+  color: #999;
+  font-size: 26rpx;
+  padding: 40rpx 0;
+}

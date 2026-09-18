@@ -1,0 +1,94 @@
+/* app.wxss - 全局样式 */
+
+/* 颜色变量：与 tabBar 主色保持一致 */
+page {
+  --primary: #3a7bd5;
+  --primary-light: #e8f0fe;
+  --success: #34c759;
+  --danger: #f5222d;
+  --warning: #faad14;
+  --text-main: #303133;
+  --text-regular: #606266;
+  --text-secondary: #909399;
+  --border: #ebeef5;
+  --bg-page: #f5f6f8;
+
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: 28rpx;
+}
+
+/* 卡片容器 */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 48rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.btn-primary[disabled] {
+  background: #c0c4cc;
+  color: #fff;
+}
+
+/* 主标题 */
+.title-lg {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.title-md {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* 文本辅助类 */
+.text-secondary {
+  color: var(--text-secondary);
+  font-size: 26rpx;
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+/* Flex 工具 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 安全区底部留白 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

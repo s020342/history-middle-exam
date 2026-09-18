@@ -1,0 +1,150 @@
+.wrong-container {
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.empty-wrap {
+  padding: 120rpx 0;
+  text-align: center;
+}
+
+.empty-text {
+  color: #909399;
+  font-size: 28rpx;
+}
+
+.wrong-card {
+  margin: 24rpx;
+  padding: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.card-type {
+  font-size: 24rpx;
+  color: #3a7bd5;
+  background: #e8f0fe;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.card-count {
+  color: #f5222d;
+  font-size: 26rpx;
+}
+
+.card-stem {
+  font-size: 30rpx;
+  color: #303133;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.card-answer {
+  font-size: 26rpx;
+  padding: 16rpx;
+  background: #f5f6f8;
+  border-radius: 8rpx;
+}
+
+.answer-label {
+  color: #909399;
+}
+
+.answer-value {
+  color: #34c759;
+  font-weight: 500;
+}
+
+.card-footer {
+  margin-top: 16rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cause-tag {
+  font-size: 26rpx;
+  color: #3a7bd5;
+  padding: 8rpx 24rpx;
+  border: 1rpx solid #3a7bd5;
+  border-radius: 24rpx;
+}
+
+.tag-set {
+  color: #909399;
+  border-color: #dcdfe6;
+}
+
+.list-bottom {
+  text-align: center;
+  color: #c0c4cc;
+  font-size: 26rpx;
+  padding: 24rpx;
+}
+
+/* 错因弹层 */
+.sheet-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 100;
+}
+
+.sheet-mask.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sheet-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.sheet-body.show {
+  transform: translateY(0);
+}
+
+.sheet-title {
+  padding: 32rpx;
+  text-align: center;
+  color: #909399;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f0f2f5;
+}
+
+.sheet-item {
+  padding: 32rpx;
+  text-align: center;
+  color: #303133;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f0f2f5;
+}
+
+.sheet-cancel {
+  margin-top: 16rpx;
+  padding: 32rpx;
+  text-align: center;
+  color: #909399;
+  font-size: 32rpx;
+  background: #f5f6f8;
+}

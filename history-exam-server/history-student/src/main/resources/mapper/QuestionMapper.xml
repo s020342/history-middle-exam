@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.QuestionMapper">
+
+    <!-- 随机组卷：按题型随机抽取指定数量的题目 ID
+         说明：
+           1) 仅取未删除(deleted=0)且上架(status=0)的题目；
+           2) type 为空时混合选择题与判断题；
+           3) ORDER BY RAND() LIMIT 实现随机抽样，V1.0 题库规模小可接受，
+              后续迭代若数据量增大可改为基于偏移的随机抽样以避免全表扫描。 -->
+    <select id="selectRandomQuestionIds" resultType="java.lang.Long">
+        SELECT id
+        FROM question
+        WHERE deleted = 0
+          AND status = 0
+        <if test="type != null">
+            AND type = #{type}
+        </if>
+        ORDER BY RAND()
+        LIMIT #{count}
+    </select>
+
+</mapper>

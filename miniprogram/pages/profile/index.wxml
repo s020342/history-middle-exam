@@ -1,0 +1,32 @@
+<view class="profile-container">
+  <view class="profile-header">
+    <view class="profile-avatar">
+      <image wx:if="{{student.avatarUrl}}" src="{{student.avatarUrl}}" mode="aspectFill" />
+      <view wx:else class="avatar-default">学</view>
+    </view>
+    <view class="profile-name">{{student.nickname || '同学'}}</view>
+    <view class="profile-grade">初三 · 历史中考</view>
+  </view>
+
+  <view class="profile-card">
+    <view class="card-row">
+      <view class="card-label">订阅状态</view>
+      <view class="card-value {{subscribed ? 'text-success' : 'text-secondary'}}">
+        {{subscribed ? '已订阅' : '未订阅'}}
+      </view>
+    </view>
+    <view class="card-row" wx:if="{{subscribed && expireAt}}">
+      <view class="card-label">到期时间</view>
+      <view class="card-value">{{expireAt}}</view>
+    </view>
+  </view>
+
+  <view class="profile-actions">
+    <view class="action-btn" wx:if="{{!subscribed}}" bindtap="onSubscribeTap">
+      立即订阅
+    </view>
+    <view class="action-btn danger" bindtap="onLogoutTap">
+      退出登录
+    </view>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.WrongRecordMapper">
+
+    <!-- 结果映射：列名 -> WrongRecordVO 字段；id/questionId 用 CAST 转字符串避免 JS 精度丢失 -->
+    <resultMap id="WrongRecordVOMap" type="com.history.exam.student.vo.WrongRecordVO">
+        <id property="id" column="id"/>
+        <result property="questionId" column="questionId"/>
+        <result property="questionType" column="questionType"/>
+        <result property="stem" column="stem"/>
+        <result property="correctAnswer" column="correctAnswer"/>
+        <result property="errorCount" column="errorCount"/>
+        <result property="errorCauseId" column="errorCauseId"/>
+        <result property="errorCauseName" column="errorCauseName"/>
+    </resultMap>
+
+    <!-- 按学生+题目查错题记录（唯一键 uk_student_question，至多一条） -->
+    <select id="selectByStudentAndQuestion" resultType="com.history.exam.student.entity.WrongRecord">
+        SELECT id, student_id, question_id, error_cause_id, error_count,
+               last_wrong_at, resolved, resolved_at,
+               created_at, updated_at, deleted
+        FROM wrong_record
+        WHERE student_id = #{studentId}
+          AND question_id = #{questionId}
+          AND deleted = 0
+        LIMIT 1
+    </select>
+
+    <!-- 分页查询错题列表：JOIN question 取题干/类型/答案；LEFT JOIN error_cause 取错因名；
+         按 last_wrong_at 倒序；id/questionId 转 CHAR 串避免 JS 精度丢失 -->
+    <select id="selectWrongRecordPage" resultMap="WrongRecordVOMap">
+        SELECT
+            CAST(wr.id AS CHAR)               AS id,
+            CAST(wr.question_id AS CHAR)     AS questionId,
+            q.type                            AS questionType,
+            q.stem                            AS stem,
+            q.answer                          AS correctAnswer,
+            wr.error_count                    AS errorCount,
+            CAST(wr.error_cause_id AS CHAR)   AS errorCauseId,
+            ec.name                           AS errorCauseName
+        FROM wrong_record wr
+        INNER JOIN question q ON q.id = wr.question_id AND q.deleted = 0
+        LEFT JOIN error_cause ec ON ec.id = wr.error_cause_id AND ec.deleted = 0
+        WHERE wr.student_id = #{studentId}
+          AND wr.deleted = 0
+        ORDER BY wr.last_wrong_at DESC
+    </select>
+
+</mapper>

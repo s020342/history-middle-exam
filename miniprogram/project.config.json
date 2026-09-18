@@ -1,0 +1,48 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "history-exam-miniprogram",
+  "description": "历史中考训练小程序学生端",
+  "appid": "wx4378cba287f76964",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "autoAudits": false,
+    "coverView": true,
+    "lazyloadPlaceholder": true,
+    "showShadowRootInWxmlPanel": false,
+    "ignoreUploadUnusedFiles": true,
+    "ignoreDevUnusedFiles": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "compileHotReLoad": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.0.0",
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
+}

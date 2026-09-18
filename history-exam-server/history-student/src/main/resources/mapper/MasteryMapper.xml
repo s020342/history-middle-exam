@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.MasteryMapper">
+
+    <!-- 按学生+题目查掌握度记录（唯一键 uk_student_question，至多一条） -->
+    <select id="selectByStudentAndQuestion" resultType="com.history.exam.student.entity.Mastery">
+        SELECT id, student_id, question_id, knowledge_id, level,
+               consecutive_correct, next_review_at,
+               created_at, updated_at, deleted
+        FROM mastery
+        WHERE student_id = #{studentId}
+          AND question_id = #{questionId}
+          AND deleted = 0
+        LIMIT 1
+    </select>
+
+    <!-- upsert：按 uk_student_question 唯一键存在则更新，否则插入 -->
+    <insert id="upsertByStudentQuestion">
+        INSERT INTO mastery (student_id, question_id, knowledge_id,
+                             level, consecutive_correct, next_review_at,
+                             created_at, updated_at, deleted)
+        VALUES (#{studentId}, #{questionId}, #{knowledgeId},
+                #{level}, #{consecutiveCorrect}, #{nextReviewAt},
+                CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0)
+        ON DUPLICATE KEY UPDATE
+            knowledge_id       = VALUES(knowledge_id),
+            level              = VALUES(level),
+            consecutive_correct = VALUES(consecutive_correct),
+            next_review_at     = VALUES(next_review_at),
+            updated_at         = CURRENT_TIMESTAMP
+    </insert>
+
+    <!-- 扫描到期复习记录：next_review_at <= today AND level < 2 AND deleted=0；
+         按 next_review_at 升序，分批 limit -->
+    <select id="selectDueList" resultType="com.history.exam.student.entity.Mastery">
+        SELECT id, student_id, question_id, knowledge_id, level,
+               consecutive_correct, next_review_at
+        FROM mastery
+        WHERE next_review_at &lt;= #{today}
+          AND level &lt; 2
+          AND deleted = 0
+        ORDER BY next_review_at ASC
+        LIMIT #{limit}
+    </select>
+
+    <!-- 按学生查询掌握度概览：按 knowledge_id 聚合；
+         knowledge_id 为空的记录不参与知识点维度统计；
+         level 加权：已掌握(level=2)题目数 / 该知识点题目总数，2 当作 100%、1 当作 50%、0 当作 0%；
+         整体 level：masteredCount == totalCount -> 2；masteredCount > 0 -> 1；否则 0 -->
+    <select id="selectStudentSummary"
+            resultType="com.history.exam.student.vo.MasterySummaryVO$KnowledgeMasteryItem">
+        SELECT
+            CAST(kp.id AS CHAR)   AS knowledgeId,
+            kp.name               AS knowledgeName,
+            COUNT(m.id)           AS totalCount,
+            SUM(CASE WHEN m.level = 2 THEN 1 ELSE 0 END) AS masteredCount,
+            SUM(CASE WHEN m.level &lt; 2 THEN 1 ELSE 0 END) AS unMasteredCount,
+            CASE
+                WHEN COUNT(m.id) = 0 THEN 0
+                WHEN SUM(CASE WHEN m.level = 2 THEN 1 ELSE 0 END) = COUNT(m.id) THEN 2
+                WHEN SUM(CASE WHEN m.level &gt; 0 THEN 1 ELSE 0 END) &gt; 0 THEN 1
+                ELSE 0
+            END AS level
+        FROM knowledge_point kp
+        LEFT JOIN mastery m ON m.knowledge_id = kp.id
+                           AND m.student_id = #{studentId}
+                           AND m.deleted = 0
+        WHERE kp.is_high_freq = 1
+          AND kp.status = 0
+          AND kp.deleted = 0
+        GROUP BY kp.id, kp.name
+        ORDER BY kp.sort ASC
+    </select>
+
+</mapper>

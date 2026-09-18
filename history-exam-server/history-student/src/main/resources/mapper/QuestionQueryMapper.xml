@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.QuestionQueryMapper">
+
+    <!-- 仅查 answer 字段，避免大字段 stem/analysis 传输 -->
+    <select id="selectAnswerById" resultType="java.lang.String">
+        SELECT answer
+        FROM question
+        WHERE id = #{id}
+          AND deleted = 0
+        LIMIT 1
+    </select>
+
+    <!-- 滚动平均更新题目作答统计：
+         review_count 自增；
+         correct_rate = (原正确率 × 原次数 + 本次得分) / (原次数 + 1)，ROUND 保留 2 位 -->
+    <update id="updateReviewStats">
+        UPDATE question
+        SET review_count = review_count + 1,
+            correct_rate = ROUND((correct_rate * review_count + #{score}) / (review_count + 1), 2)
+        WHERE id = #{id}
+          AND deleted = 0
+    </update>
+
+</mapper>

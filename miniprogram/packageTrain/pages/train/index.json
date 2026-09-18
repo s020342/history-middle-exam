@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "自由训练",
+  "usingComponents": {
+    "question-item": "/components/question-item/index"
+  }
+}

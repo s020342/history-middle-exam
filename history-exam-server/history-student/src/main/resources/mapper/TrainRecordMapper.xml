@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.TrainRecordMapper">
+
+    <!-- 统计学生今日已答题数（按 answered_at 当日，未删） -->
+    <select id="countTodayAnswered" resultType="int">
+        SELECT COUNT(*)
+        FROM train_record
+        WHERE student_id = #{studentId}
+          AND deleted = 0
+          AND DATE(answered_at) = CURDATE()
+    </select>
+
+</mapper>

@@ -1,0 +1,41 @@
+<view class="sub-container">
+  <view class="sub-header">
+    <view class="header-title">开通会员</view>
+    <view class="header-desc">畅练全部题目，覆盖 6 大模块、200+ 考点</view>
+  </view>
+
+  <view class="plan-list" wx:if="{{!loading}}">
+    <view
+      class="plan-card {{selectedPlanCode === item.code ? 'plan-selected' : ''}}"
+      wx:for="{{plans}}"
+      wx:key="code"
+      data-code="{{item.code}}"
+      bindtap="onPlanTap"
+    >
+      <view class="plan-name">{{item.name}}</view>
+      <view class="plan-price">
+        <text class="price-symbol">¥</text>
+        <text class="price-value">{{item.priceYuan}}</text>
+        <text class="price-unit">/{{item.durationDays}}天</text>
+      </view>
+      <view class="plan-check" wx:if="{{selectedPlanCode === item.code}}">✓</view>
+    </view>
+  </view>
+
+  <view class="sub-loading" wx:if="{{loading}}">加载中...</view>
+
+  <view class="sub-benefits">
+    <view class="benefit-title">会员权益</view>
+    <view class="benefit-item">√ 全部题目畅练，不限每日题量</view>
+    <view class="benefit-item">√ 错题本、错因归因、间隔复习</view>
+    <view class="benefit-item">√ 训练报告与可视化分析</view>
+    <view class="benefit-item">√ 限时小测与变式题推送</view>
+  </view>
+
+  <view class="sub-footer safe-bottom">
+    <view class="btn-primary" bindtap="onSubscribeTap">立即订阅</view>
+    <view class="agreement" bindtap="onAgreementTap">
+      订阅即同意《会员协议》
+    </view>
+  </view>
+</view>

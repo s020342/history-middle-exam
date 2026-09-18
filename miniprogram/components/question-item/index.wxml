@@ -1,0 +1,32 @@
+<view class="question-card" wx:if="{{question}}">
+  <!-- 题干 -->
+  <view class="question-stem">
+    <text class="stem-type">{{question.type === 1 ? '【选择题】' : '【判断题】'}}</text>
+    <text class="stem-text">{{question.stem}}</text>
+  </view>
+
+  <!-- 选项 -->
+  <view class="option-list">
+    <view
+      class="option-item {{answered && option.key === correctAnswer ? 'option-correct' : ''}} {{answered && option.key === selectedAnswer && option.key !== correctAnswer ? 'option-wrong' : ''}} {{!answered && option.key === selectedAnswer ? 'option-selected' : ''}}"
+      wx:for="{{question.options}}"
+      wx:key="key"
+      wx:for-item="option"
+      data-key="{{option.key}}"
+      bindtap="onOptionTap"
+    >
+      <view class="option-key">{{option.key}}</view>
+      <view class="option-content">{{option.content}}</view>
+    </view>
+  </view>
+
+  <!-- 解析（答题后展示） -->
+  <view class="question-analysis" wx:if="{{answered}}">
+    <view class="analysis-result {{selectedAnswer === correctAnswer ? 'result-correct' : 'result-wrong'}}">
+      {{selectedAnswer === correctAnswer ? '回答正确' : '回答错误'}}
+    </view>
+    <view class="analysis-text" wx:if="{{question.analysis}}">
+      <text class="analysis-label">解析：</text>{{question.analysis}}
+    </view>
+  </view>
+</view>

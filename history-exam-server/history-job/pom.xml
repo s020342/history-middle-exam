@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- history-job：定时任务模块，承载小测触发、复习队列生成、对账 Job -->
+    <parent>
+        <groupId>com.history.exam</groupId>
+        <artifactId>history-exam-server</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>history-job</artifactId>
+    <name>history-job</name>
+    <description>定时任务模块：小测触发、复习队列生成、支付对账</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-student</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.history.exam</groupId>
+            <artifactId>history-pay</artifactId>
+        </dependency>
+        <!-- Lombok：上游模块为 provided 作用域不传递，本模块需显式声明 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- Redis 缓存：复习队列缓存 evict -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

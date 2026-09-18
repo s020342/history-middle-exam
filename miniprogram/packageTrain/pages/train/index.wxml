@@ -1,0 +1,33 @@
+<view class="train-container" wx:if="{{!loading && questions.length}}">
+  <!-- 顶部进度 -->
+  <view class="train-progress">
+    <view class="progress-text">
+      第 {{currentIndex + 1}} / {{questions.length}} 题
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill"
+            style="width: {{(currentIndex + 1) / questions.length * 100}}%"></view>
+    </view>
+  </view>
+
+  <!-- 题目组件 -->
+  <question-item
+    question="{{questions[currentIndex]}}"
+    selected-answer="{{selectedAnswer}}"
+    answered="{{answered}}"
+    correct-answer="{{lastResult.correctAnswer}}"
+    bind:optiontap="onOptionTap"
+  />
+
+  <!-- 下一题按钮 -->
+  <view class="train-footer safe-bottom" wx:if="{{answered}}">
+    <view class="btn-primary" bindtap="onNextTap">
+      {{currentIndex + 1 >= questions.length ? '完成训练' : '下一题'}}
+    </view>
+  </view>
+</view>
+
+<!-- 加载占位 -->
+<view class="loading-wrap" wx:if="{{loading}}">
+  <view class="loading-text">正在组卷...</view>
+</view>

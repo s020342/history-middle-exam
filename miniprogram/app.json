@@ -1,0 +1,59 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/profile/index"
+  ],
+  "subPackages": [
+    {
+      "root": "packageTrain",
+      "name": "train",
+      "pages": [
+        "pages/train/index",
+        "pages/wrong-book/index",
+        "pages/knowledge-card/index",
+        "pages/review-queue/index"
+      ]
+    },
+    {
+      "root": "packagePay",
+      "name": "pay",
+      "pages": [
+        "pages/subscription/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "wifi",
+      "packages": ["train"]
+    }
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#3a7bd5",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "历史中考训练",
+    "backgroundColor": "#f5f6f8",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#3a7bd5",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "训练"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

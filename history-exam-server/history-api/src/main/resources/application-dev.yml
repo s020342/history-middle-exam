@@ -1,0 +1,15 @@
+# 开发环境：SQL 打印、调试日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.history.exam: DEBUG
+
+# 微信小程序：dev 环境无真实凭证时开启 mock 登录，跳过 code2session，用 code 派生假 openid
+# 生产环境必须删除此项（mockLogin 默认 false）
+history:
+  wx:
+    miniapp:
+      mock-login: true

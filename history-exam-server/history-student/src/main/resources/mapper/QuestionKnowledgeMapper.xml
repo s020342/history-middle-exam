@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.QuestionKnowledgeMapper">
+
+    <!-- 按题目查主考点（is_primary=1）的 knowledge_id；未关联返回 null -->
+    <select id="selectPrimaryKnowledgeIdByQuestionId" resultType="java.lang.Long">
+        SELECT knowledge_id
+        FROM question_knowledge
+        WHERE question_id = #{questionId}
+          AND is_primary = 1
+          AND deleted = 0
+        LIMIT 1
+    </select>
+
+</mapper>

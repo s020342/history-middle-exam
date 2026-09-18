@@ -1,0 +1,19 @@
+# 生产环境：日志落盘，敏感信息通过环境变量注入
+logging:
+  level:
+    root: INFO
+    com.history.exam: INFO
+  file:
+    name: /var/log/history-exam/server.log
+    max-size: 100MB
+    max-history: 30
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n"
+
+spring:
+  jpa:
+    open-in-view: false
+  datasource:
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10

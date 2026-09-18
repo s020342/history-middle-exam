@@ -1,0 +1,41 @@
+<view class="card-page">
+  <!-- 加载态 -->
+  <view class="loading-tip" wx:if="{{loading}}">加载中...</view>
+
+  <!-- 空态 -->
+  <view class="empty-tip" wx:if="{{!loading && cards.length === 0}}">
+    暂无知识点卡片
+  </view>
+
+  <!-- 卡片列表 -->
+  <view class="card-list">
+    <view
+      class="card-item {{expandedId === item.id ? 'card-expanded' : ''}}"
+      wx:for="{{cards}}"
+      wx:key="id"
+      wx:for-item="item"
+      data-id="{{item.id}}"
+      bindtap="onCardTap"
+    >
+      <view class="card-header">
+        <view class="card-name">{{item.name}}</view>
+        <view class="card-badge" wx:if="{{item.isHighFreq === 1}}">高频</view>
+        <view class="card-arrow">{{expandedId === item.id ? '收起' : '展开'}}</view>
+      </view>
+
+      <!-- 展开内容 -->
+      <block wx:if="{{expandedId === item.id}}">
+        <view class="card-body" wx:if="{{currentCard}}">
+          <image
+            class="card-image"
+            wx:if="{{currentCard.cardImage}}"
+            src="{{currentCard.cardImage}}"
+            mode="widthFix"
+          />
+          <view class="card-content">{{currentCard.cardContent}}</view>
+        </view>
+        <view class="card-loading" wx:else>加载中...</view>
+      </block>
+    </view>
+  </view>
+</view>

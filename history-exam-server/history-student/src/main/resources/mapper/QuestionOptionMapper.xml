@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.history.exam.student.mapper.QuestionOptionMapper">
+
+    <!-- 按题目 ID 查询选项：过滤软删，明确字段避免 SELECT *，按 sort 升序 -->
+    <select id="selectByQuestionId" resultType="com.history.exam.student.entity.QuestionOption">
+        SELECT id, question_id, option_key, content, sort, created_at, updated_at
+        FROM question_option
+        WHERE question_id = #{questionId}
+          AND deleted = 0
+        ORDER BY sort ASC
+    </select>
+
+</mapper>
